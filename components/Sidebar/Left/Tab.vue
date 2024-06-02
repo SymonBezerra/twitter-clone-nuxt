@@ -4,7 +4,7 @@
             <slot name="icon"></slot>
         </div>
 
-        <div class="ml-4 text-xl" :class="textClasses">
+        <div class="hidden ml-4 text-xl lg:block" :class="textClasses">
             <slot name="name"></slot>
         </div>
     </nuxt-link>
