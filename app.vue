@@ -11,7 +11,15 @@
             </div>
           </div>
           <!-- main content -->
+          <main class="col-span-12 bg-red-500 sm:col-span-8 lg:col-span-6">
+            asd
+          </main>
           <!-- right sidebar -->
+          <div class="hidden md:block md:col-span-3 xl:col-span-4 bg-blue-500">
+            <div class="sticky top-0">
+              <SidebarRight />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -21,5 +29,5 @@
 
 
 <script setup>
-  const darkMode = ref(false)
+  const darkMode = ref(true)
 </script>

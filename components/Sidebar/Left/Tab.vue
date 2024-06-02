@@ -1,10 +1,10 @@
 <template>
     <nuxt-link :to="props.to" class="flex items-center p-3 w-min hover:bg-gray-200 rounded-full dark:hover:bg-dim-200" :class="defaultTransition">
-        <div class="w-6 h-6 text-dark">
+        <div class="w-6 h-6 dark:text-white">
             <slot name="icon"></slot>
         </div>
 
-        <div class="hidden ml-4 text-xl lg:block" :class="textClasses">
+        <div class="hidden ml-4 text-xl dark:text-white xl:block" :class="textClasses">
             <slot name="name"></slot>
         </div>
     </nuxt-link>
