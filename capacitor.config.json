@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.twitter",
+  "appName": "twitter-clone",
+  "webDir": ".output/public",
+  "bundledWebRuntime": false
+}
