@@ -1,5 +1,8 @@
 import { findUserbyUsername } from "~/server/db/users"
 import bcrypt from "bcrypt"
+import { generateTokens, sendRefreshToken } from "~/server/utils/jwt"
+import { userTransformer } from "~/server/transformers/users"
+import { createRefreshToken } from "~/server/db/refreshTokens"
 
 export default defineEventHandler(
 async (event) => {
@@ -26,10 +29,25 @@ async (event) => {
     if (!passwordsMatch)
         return sendError(event, createError({
             statusCode: 402,
-            statusMessage: "Username not found"
+            statusMessage: "Invalid password"
         }))
 
     // generate tokens
-    const { accessToken, refreshToken } = generateTokens()
+    const { accessToken, refreshToken } = generateTokens(user)
+
+    // save it on db
+
+    await createRefreshToken({
+        token: refreshToken,
+        userId: user.id
+    })
+
+    // add http only cookie
+    sendRefreshToken(event, refreshToken)
+
+    return {
+        "access_token": accessToken,
+        "user": userTransformer(user)
+    }
 
 })

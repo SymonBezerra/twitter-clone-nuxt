@@ -24,4 +24,14 @@ model User {
   profileImage String?
   created_at DateTime @default(now())
   updated_at DateTime? @updatedAt
+  refreshToken RefreshToken[]
+}
+
+model RefreshToken {
+  id String @id @default(uuid())
+  token String @unique
+  created_at DateTime @default(now())
+  updated_at DateTime? @updatedAt
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
