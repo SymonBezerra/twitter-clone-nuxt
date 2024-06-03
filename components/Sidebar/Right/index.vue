@@ -4,7 +4,7 @@
         <SidebarRightPreviewCard title="What's happening">
             <SidebarRightPreviewCardItem v-for="whatsHappening in whatsHappeningItems">
                 <div>
-                    <h2 class="font-bold text-gray-800 text-md dark:text-gray-50">
+                    <h2 class="my-0 font-bold text-gray-800 text-md dark:text-gray-50">
                         {{ whatsHappening.title }}
                     </h2>
 
@@ -21,12 +21,12 @@
     <div>
         <SidebarRightPreviewCard title="Who to follow">
             <SidebarRightPreviewCardItem v-for="whoToFollow in whoToFollowItems">
-                <div class="flex flex-row justify-between p-2 items-center">
+                <div class="flex flex-row justify-between items-center">
 
                     <div class="flex flex-row">
                         <img class="h-10 w-10 rounded-full" :src="whoToFollow.image" :alt="whoToFollow.name">
                         <div class="flex flex-col ml-2">
-                            <h1 class="text-sm font-bold text-gray-900 dark:text-gray-50">
+                            <h1 class="my-0 text-sm font-bold text-gray-900 dark:text-gray-50">
                                 {{ whoToFollow.name }}
                             </h1>
                             <p class="text-xs text-gray-400">
