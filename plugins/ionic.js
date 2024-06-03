@@ -16,5 +16,8 @@ import '@ionic/vue/css/display.css';
 import '@ionic/vue/css/ionic.bundle.css';
 
 // Create the app instance and use Ionic
-const app = createApp({});
-app.use(IonicVue);
+export default defineNuxtPlugin((nuxtApp) => {
+    const app = createApp({});
+    app.use(IonicVue);
+    nuxtApp.vueApp.use(IonicVue);
+});

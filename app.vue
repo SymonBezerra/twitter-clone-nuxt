@@ -12,7 +12,7 @@
           </div>
           <!-- main content -->
           <main class="col-span-12 sm:col-span-8 lg:col-span-6">
-            <router-view />
+            <RouterView />
           </main>
           <!-- right sidebar -->
           <!-- todo change to MD if nececssary -->
