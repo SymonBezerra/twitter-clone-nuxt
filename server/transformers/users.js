@@ -1,6 +1,4 @@
-import { User } from "@prisma/client"
-
-export const userTransformer = (user: User) => {
+export const userTransformer = (user) => {
     return {
         id: user.id,
         name: user.name,
