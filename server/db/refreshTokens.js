@@ -5,3 +5,9 @@ export const createRefreshToken = async (refreshToken) => {
         data: refreshToken
     })
 }
+
+export const findRefreshTokenByToken = async(refreshToken) => {
+    return await prisma.refreshToken.findUnique({
+        where: { token }
+    })
+}
