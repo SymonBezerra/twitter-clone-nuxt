@@ -17,6 +17,6 @@ export const findUserbyUsername = async (username) => {
     return await prisma.user.findUnique({ where: { username }})
 }
 
-export const findUserbyId = async (username) => {
+export const findUserById = async (id) => {
     return await prisma.user.findUnique({ where: { id }})
 }

@@ -8,6 +8,6 @@ export const createRefreshToken = async (refreshToken) => {
 
 export const findRefreshTokenByToken = async(refreshToken) => {
     return await prisma.refreshToken.findUnique({
-        where: { token }
+        where: { token: refreshToken }
     })
 }

@@ -1,18 +1,16 @@
-import { getRefreshTokenByToken } from "~/server/db/refreshTokens"
 import { decodeRefreshToken, generateTokens } from "~/server/utils/jwt"
-import { getUserById } from "~/server/db/users"
-import { getCookie } from "h3"
+import { findRefreshTokenByToken } from "~/server/db/refreshTokens"
+import { findUserById } from "~/server/db/users"
 
 export default defineEventHandler(async (event) => {
-    const cookies = getCookie(event, "refreshToken")
-    const refreshToken = cookies.refreshToken
+    const refreshToken = getCookie(event, "refresh_token")
     if (!refreshToken)
         return sendError(event, createError({
             statusMessage: "Refresh token is invalid",
             statusCode: 401
     }))
 
-    const rToken = await getRefreshTokenByToken(refreshToken)
+    const rToken = await findRefreshTokenByToken(refreshToken)
     if (!rToken)
         return sendError(event, createError({
             statusMessage: "Refresh token is invalid",
@@ -22,7 +20,8 @@ export default defineEventHandler(async (event) => {
     const token = decodeRefreshToken(refreshToken)
 
     try {
-        const user = await getUserById(token.userId)
+        const user = await findUserById(token.userId)
+        console.log(JSON.stringify(user))
         const { accessToken } = generateTokens(user)
         return {
             "access_token": accessToken
