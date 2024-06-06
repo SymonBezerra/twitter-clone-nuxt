@@ -14,6 +14,15 @@ const generateRefreshToken = (user) => {
     })
 }
 
+export const decodeAccessToken = (token) => {
+    const config = useRuntimeConfig()
+    try {
+        return jwt.verify(token, config.jwtAccessSecret)
+    } catch (error) {
+        return null
+    }
+}
+
 export const decodeRefreshToken = (token) => {
     const config = useRuntimeConfig()
     try {

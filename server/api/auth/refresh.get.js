@@ -21,7 +21,6 @@ export default defineEventHandler(async (event) => {
 
     try {
         const user = await findUserById(token.userId)
-        console.log(JSON.stringify(user))
         const { accessToken } = generateTokens(user)
         return {
             "access_token": accessToken
